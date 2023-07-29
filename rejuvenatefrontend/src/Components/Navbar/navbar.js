@@ -13,7 +13,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("usertoken");
-    if (!token) {
+    if (token) {
       navigate("/login");
     } else {
       async function fetchProducts() {
