@@ -11,7 +11,7 @@ plugins:
   - serverless-s3-sync
 
 custom:
-  sitename: rejuvenatefrontends3bucket
+  sitename: rejuvenates3bucket
   s3Sync:
     - bucketName: ${self:custom.sitename}
       localDir: rejuvenatefrontend/build
@@ -22,7 +22,9 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.sitename}
-        AccessControl: PublicRead
+        PublicAccessBlockConfiguration:
+          BlockPublicPolicy: false
+          RestrictPublicBuckets: false
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
